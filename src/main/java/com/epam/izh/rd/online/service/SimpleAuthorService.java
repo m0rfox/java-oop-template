@@ -1,0 +1,59 @@
+package com.epam.izh.rd.online.service;
+
+import com.epam.izh.rd.online.entity.Author;
+import com.epam.izh.rd.online.repository.AuthorRepository;
+import com.epam.izh.rd.online.repository.SimpleAuthorRepository;
+
+public class SimpleAuthorService implements AuthorService{
+    AuthorRepository authorRepository = new SimpleAuthorRepository();
+
+    public SimpleAuthorService() {
+    }
+
+    public SimpleAuthorService(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
+
+    /**
+     * Метод должен сохранять автора.
+     * По факту, он просто обращается к репозиторию с авторами и вызывает аналогичный метод, после чего возвращает результат.
+     *
+     * @param author
+     */
+    @Override
+    public boolean save(Author author) {
+        return authorRepository.save(author);
+    }
+
+    /**
+     * Метод должен находить автора по имени и фамилии.
+     * По факту, он просто обращается к репозиторию с авторами и вызывает аналогичный метод, после чего возвращает результат.
+     *
+     * @param name
+     * @param lastname
+     */
+    @Override
+    public Author findByFullName(String name, String lastname) {
+        return authorRepository.findByFullName(name, lastname);
+    }
+
+    /**
+     * Метод должен удалять автора.
+     * По факту, он просто обращается к репозиторию с авторами и вызывает аналогичный метод, после чего возвращает результат..
+     *
+     * @param author
+     */
+    @Override
+    public boolean remove(Author author) {
+        return authorRepository.remove(author);
+    }
+
+    /**
+     * Метод считать количество сохраненных авторов на текущий момент.
+     * По факту, он просто обращается к репозиторию с авторами и вызывает аналогичный метод, после чего возвращает результат.
+     */
+    @Override
+    public int count() {
+        return authorRepository.count();
+    }
+}
